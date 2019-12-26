@@ -17,7 +17,7 @@ import javax.ws.rs.ext.Provider;
  * Created by DebugSy on 2019/8/12.
  */
 @Configuration
-@ApplicationPath("/api/rtc")
+@ApplicationPath("/api/scrawler")
 public class JerseyResourceConfig extends ResourceConfig {
 
     @PostConstruct
