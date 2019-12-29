@@ -12,10 +12,10 @@ import java.util.List;
 public interface HouseInfoRepository extends JpaRepository<Houseinfo, String> {
 
     @Query("select new com.shiy.practice.scrawler.entity.response.HousePriceAvg(" +
-            "t.community,count(t.houseId),avg(t.totalPrice)) from Houseinfo t group by t.community")
+            "t.community,count(t.houseId),avg(t.unitPrice)) from Houseinfo t group by t.community")
     List<HousePriceAvg> findAvgPrice();
 
     @Query("select new com.shiy.practice.scrawler.entity.response.HousePriceAvg(" +
-            "t.community,count(t.houseId),avg(t.totalPrice)) from Houseinfo t where t.community = ?1")
+            "t.community,count(t.houseId),avg(t.unitPrice)) from Houseinfo t where t.community = ?1")
     List<HousePriceAvg> findByCommunity(String community);
 }

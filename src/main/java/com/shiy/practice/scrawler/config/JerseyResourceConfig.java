@@ -1,6 +1,7 @@
 package com.shiy.practice.scrawler.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shiy.practice.scrawler.rest.CommunityResource;
 import com.shiy.practice.scrawler.rest.HouseInfoResource;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -24,6 +25,7 @@ public class JerseyResourceConfig extends ResourceConfig {
     public void initialize() {
         super
                 .register(HouseInfoResource.class)
+                .register(CommunityResource.class)
                 .register(ObjectMapperContextResolver.class);
 
         //add swagger ui resource

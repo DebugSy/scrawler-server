@@ -1,8 +1,21 @@
 package com.shiy.practice.scrawler.entity;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "community")
 public class Community {
 
+  @Id
   private long id;
 
   private String title;
@@ -29,12 +42,15 @@ public class Community {
 
   private String company;
 
+  @Column(name = "building_num")
   private String buildingNum;
 
+  @Column(name = "house_num")
   private String houseNum;
 
   private String price;
 
   private String city;
 
-  private java.sql.Timestamp validdate;}
+  private java.sql.Timestamp validdate;
+}

@@ -1,6 +1,7 @@
 package com.shiy.practice.scrawler.rest;
 
 
+import com.shiy.practice.scrawler.entity.Houseinfo;
 import com.shiy.practice.scrawler.entity.response.HousePriceAvg;
 import com.shiy.practice.scrawler.repositories.HouseInfoRepository;
 import io.swagger.annotations.Api;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @Component
 @Path("/houses")
-@Api(value = "[Execution] 执行相关接口")
+@Api(value = "[House] 执行相关接口")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class HouseInfoResource {
@@ -32,8 +33,8 @@ public class HouseInfoResource {
     }
 
     @GET
-    @Path("/name")
-    public Response findByName(String community) {
+    @Path("/avg/name")
+    public Response findByName(@QueryParam("community") String community) {
         List<HousePriceAvg> housePriceAvgs = repository.findByCommunity(community);
         return Response.status(200).entity(housePriceAvgs).build();
     }
