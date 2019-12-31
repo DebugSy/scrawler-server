@@ -11,4 +11,6 @@ public interface CommunityRepository extends JpaRepository<Community, Long> {
 
     List<Community> findByTitleLike(String title);
 
+    List<Community> findByTitleIn(List<String> communities);
+
 }

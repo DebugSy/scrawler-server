@@ -18,4 +18,8 @@ public interface HouseInfoRepository extends JpaRepository<Houseinfo, String> {
     @Query("select new com.shiy.practice.scrawler.entity.response.HousePriceAvg(" +
             "t.community,count(t.houseId),avg(t.unitPrice)) from Houseinfo t where t.community = ?1")
     List<HousePriceAvg> findByCommunity(String community);
+
+    @Query("select new com.shiy.practice.scrawler.entity.response.HousePriceAvg(" +
+            "t.community,count(t.houseId),avg(t.unitPrice)) from Houseinfo t where t.community in ?1")
+    List<HousePriceAvg> findByCommunityIn(List<String> communities);
 }

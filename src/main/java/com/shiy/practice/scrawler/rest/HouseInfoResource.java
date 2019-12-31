@@ -1,7 +1,6 @@
 package com.shiy.practice.scrawler.rest;
 
 
-import com.shiy.practice.scrawler.entity.Houseinfo;
 import com.shiy.practice.scrawler.entity.response.HousePriceAvg;
 import com.shiy.practice.scrawler.repositories.HouseInfoRepository;
 import io.swagger.annotations.Api;
@@ -43,6 +42,13 @@ public class HouseInfoResource {
     @Path("/avg")
     public Response getAvg() {
         List<HousePriceAvg> avgPrice = repository.findAvgPrice();
+        return Response.status(200).entity(avgPrice).build();
+    }
+
+    @POST
+    @Path("/avg/compare")
+    public Response getAvgCompare(List<String> communities) {
+        List<HousePriceAvg> avgPrice = repository.findByCommunityIn(communities);
         return Response.status(200).entity(avgPrice).build();
     }
 
