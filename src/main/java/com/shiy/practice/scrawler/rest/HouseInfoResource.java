@@ -48,7 +48,12 @@ public class HouseInfoResource {
     @POST
     @Path("/avg/compare")
     public Response getAvgCompare(List<String> communities) {
-        List<HousePriceAvg> avgPrice = repository.findByCommunityIn(communities);
+        List<HousePriceAvg> avgPrice;
+        if (communities == null || communities.isEmpty()) {
+            avgPrice = repository.findAvgPrice();
+        } else {
+            avgPrice = repository.findByCommunityIn(communities);
+        }
         return Response.status(200).entity(avgPrice).build();
     }
 
