@@ -33,4 +33,11 @@ public class CommunityResource {
         return Response.status(200).entity(communities).build();
     }
 
+    @POST
+    @Path("/list")
+    public Response listCommunity(List<String> names){
+        List<Community> communities = repository.findByTitleIsIn(names);
+        return Response.status(200).entity(communities).build();
+    }
+
 }
